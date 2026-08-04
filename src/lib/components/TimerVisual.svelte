@@ -56,6 +56,7 @@
     fill: none;
     stroke: var(--color-timer-track);
     stroke-width: 17px;
+    transition: stroke 360ms ease;
   }
 
   #timer-progress {
@@ -68,6 +69,7 @@
     stroke-linecap: round;
     transform: rotate(-90deg);
     transform-origin: center;
+    transition: stroke 360ms ease;
   }
 
   .animate-progress-jump {
