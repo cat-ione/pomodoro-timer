@@ -70,10 +70,10 @@
     transform: rotate(-90deg);
     transform-origin: center;
     transition: stroke 360ms ease;
-  }
 
-  .animate-progress-jump {
-    transition: stroke-dashoffset 1s ease;
+    &.animate-progress-jump {
+      transition: stroke-dashoffset 1s ease;
+    }
   }
 
   #time-text {
