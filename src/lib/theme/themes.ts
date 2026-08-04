@@ -78,3 +78,15 @@ export function getAccents(theme: ThemeName, mode: string, flavor: string) {
   const resolvedFlavor = flavor && modeEntry.flavors[flavor] ? flavor : modeEntry.defaultFlavor;
   return modeEntry.flavors[resolvedFlavor].accents
 }
+
+const themeNames = {
+  catppuccin: "Catppuccin",
+  gruvbox: "Gruvbox",
+  everforest: "Everforest",
+  nord: "Nord",
+  tokyonight: "Tokyo Night",
+}
+
+export function getName(themeName: ThemeName) {
+  return themeNames[themeName];
+}
