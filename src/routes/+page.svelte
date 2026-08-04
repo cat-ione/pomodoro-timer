@@ -58,12 +58,12 @@
       <TimerVisual bind:this={timerVisual} {timeRemaining} {progress} />
     </div>
     <div id="timer-buttons-container">
-      <button id="start-button"
+      <button id="start-button" class="timer-button"
         onclick={() => (timerPaused ? startTimer() : pauseTimer())}>
         {timerPaused ? "\uf04b" : "\uf04c"}
       </button>
-      <button id="reset-button" onclick={resetTimer}>&#xf0e2</button>
-      <button id="next-button" onclick={nextTimer}>&#xf051</button>
+      <button id="reset-button" class="timer-button" onclick={resetTimer}>&#xf0e2</button>
+      <button id="next-button" class="timer-button" onclick={nextTimer}>&#xf051</button>
     </div>
   </div>
 </main>

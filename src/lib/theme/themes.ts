@@ -1,9 +1,11 @@
 import { catppuccin } from "./catppuccin";
 import { everforest } from "./everforest";
 
-const themeData = {
+export const themes = {
   catppuccin, everforest
 } as const;
+
+export type ThemeName = keyof typeof themes;
 
 type Flavor = {
   colors: Record<string, string>;
@@ -19,13 +21,17 @@ type Theme = {
   defaultMode: string;
   modes: Record<string, Mode>;
 };
-type ThemeName = keyof typeof themeData;
 
 const defaultTheme: ThemeName = "catppuccin";
 
-export function applyTheme(theme?: ThemeName, mode?: string, flavor?: string, accent?: string) {
-  const resolvedTheme = theme && themeData[theme] ? theme : defaultTheme;
-  const themeEntry = themeData[resolvedTheme] as Theme;
+export function applyTheme(
+  theme?: ThemeName,
+  mode?: string,
+  flavor?: string,
+  accent?: string
+) {
+  const resolvedTheme = theme && themes[theme] ? theme : defaultTheme;
+  const themeEntry = themes[resolvedTheme] as Theme;
 
   const resolvedMode = mode && themeEntry.modes[mode] ? mode : themeEntry.defaultMode;
   const modeEntry = themeEntry.modes[resolvedMode];
@@ -40,4 +46,32 @@ export function applyTheme(theme?: ThemeName, mode?: string, flavor?: string, ac
 
   const accentName = accent && data.accents.includes(accent) ? accent : data.defaultAccent;
   style.setProperty("--color-accent", data.colors[accentName]);
+
+  return {
+    theme: resolvedTheme,
+    mode: resolvedMode,
+    flavor: resolvedFlavor,
+    accent: accentName,
+  };
+}
+
+export function getModes(theme: ThemeName) {
+  const themeEntry = themes[theme] as Theme;
+  return themeEntry.modes;
+}
+
+export function getFlavors(theme: ThemeName, mode: string) {
+  const themeEntry = themes[theme] as Theme;
+  const resolvedMode = mode && themeEntry.modes[mode] ? mode : themeEntry.defaultMode;
+  return themeEntry.modes[resolvedMode].flavors;
+}
+
+export function getAccents(theme: ThemeName, mode: string, flavor: string) {
+  const themeEntry = themes[theme] as Theme;
+
+  const resolvedMode = mode && themeEntry.modes[mode] ? mode : themeEntry.defaultMode;
+  const modeEntry = themeEntry.modes[resolvedMode];
+
+  const resolvedFlavor = flavor && modeEntry.flavors[flavor] ? flavor : modeEntry.defaultFlavor;
+  return modeEntry.flavors[resolvedFlavor].accents
 }
