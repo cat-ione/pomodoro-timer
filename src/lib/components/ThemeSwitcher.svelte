@@ -4,7 +4,13 @@
     "catppuccin-mocha",
     "catppuccin-macchiato",
     "catppuccin-frappe",
-    "catppuccin-latte"
+    "catppuccin-latte",
+    "everforest-dark-hard",
+    "everforest-dark-medium",
+    "everforest-dark-soft",
+    "everforest-light-hard",
+    "everforest-light-medium",
+    "everforest-light-soft",
   ];
 
   function swapTheme() {
