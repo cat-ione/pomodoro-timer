@@ -124,7 +124,7 @@ $default-flavor: mocha;
 @each $flavor-name, $palette in $catppuccin {
   [data-theme="#{$flavor-name}"] {
     @each $key, $value in $palette {
-      --color-#{$key}: #{$value};
+      --color-#{"" + $key}: #{$value};
     }
   }
 }
