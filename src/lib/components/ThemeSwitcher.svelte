@@ -27,5 +27,9 @@
     justify-content: center;
     align-items: center;
     box-shadow: var(--color-shadow-main) -5px 6px;
+
+    &:active {
+      box-shadow: none;
+    }
   }
 </style>
