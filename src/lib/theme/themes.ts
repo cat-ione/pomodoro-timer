@@ -1,9 +1,11 @@
 import { catppuccin } from "./catppuccin";
 import { gruvbox } from "./gruvbox";
 import { everforest } from "./everforest";
+import { nord } from "./nord";
+import { tokyonight } from "./tokyonight";
 
 export const themes = {
-  catppuccin, gruvbox, everforest
+  catppuccin, gruvbox, everforest, nord, tokyonight
 } as const;
 
 export type ThemeName = keyof typeof themes;
