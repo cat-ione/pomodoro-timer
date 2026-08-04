@@ -5,8 +5,7 @@ const tokens = {
   "bg-button": "surface0",
   "text": "text",
   "text-hover": "surface1",
-  "shadow-main": "crust",
-  "shadow-inner": "mantle",
+  "shadow": "mantle",
   "timer-track": "overlay0",
 } as const;
 

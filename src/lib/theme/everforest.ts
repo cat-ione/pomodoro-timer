@@ -2,11 +2,10 @@ const tokens = {
   "bg-main": "bg0",
   "bg-outer": "bg-dim",
   "bg-inner": "bg1",
-  "bg-button": "bg2",
+  "bg-button": "bg4",
   "text": "fg",
-  "text-hover": "bg3",
-  "shadow-main": "bg-dim",
-  "shadow-inner": "bg1",
+  "text-hover": "bg4",
+  "shadow": "bg-dim",
   "timer-track": "bg5",
 } as const;
 
