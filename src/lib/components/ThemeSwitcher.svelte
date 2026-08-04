@@ -1,21 +1,8 @@
 <script lang="ts">
-  let index = 0;
-  let themes = [
-    "catppuccin-mocha",
-    "catppuccin-macchiato",
-    "catppuccin-frappe",
-    "catppuccin-latte",
-    "everforest-dark-hard",
-    "everforest-dark-medium",
-    "everforest-dark-soft",
-    "everforest-light-hard",
-    "everforest-light-medium",
-    "everforest-light-soft",
-  ];
+  import { applyTheme } from "$lib/theme/themes";
 
   function swapTheme() {
-    index = (index + 1) % themes.length;
-    document.documentElement.setAttribute("data-theme", themes[index]);
+    applyTheme("everforest");
   }
 </script>
 

@@ -1,4 +1,7 @@
-@use "themes.scss" as *;
+@font-face {
+  font-family: "FiraCode Nerd Font";
+  src: url("/fonts/FiraCodeNerdFontMono-Regular.ttf") format("truetype");
+}
 
 * {
   transition:
