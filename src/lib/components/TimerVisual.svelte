@@ -8,6 +8,9 @@
 
   let isJumping = $state(false);
   export function triggerJumpAnimation() {
+    // We can't apply the jump transition to the progress bar by default
+    // since it would lag behind and look wrong, we only apply the class to
+    // it when needed, only for the duration of the transition
     isJumping = true;
     setTimeout(() => { isJumping = false }, 1000);
   }
@@ -19,6 +22,8 @@
   </div>
   <svg viewBox="0 0 500 500" id="timer-progress-svg">
     <circle id="timer-progress-track" />
+    <!-- Small hack to draw one long dashed line and offset it forward
+    to decrease the length of the progress bar -->
     <circle id="timer-progress" stroke-dasharray={circumference}
       stroke-dashoffset={circumference * progress}
       class:animate-progress-jump={isJumping} />
