@@ -1,8 +1,9 @@
 import { catppuccin } from "./catppuccin";
 import { everforest } from "./everforest";
+import { dracula } from "./dracula";
 
 export const themes = {
-  catppuccin, everforest
+  catppuccin, everforest, dracula
 } as const;
 
 export type ThemeName = keyof typeof themes;
