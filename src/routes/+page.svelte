@@ -2,6 +2,8 @@
   import TimerVisual from "$lib/components/TimerVisual.svelte";
   import ThemeSwitcher from "$lib/components/ThemeSwitcher.svelte";
 
+  let timerVisual: TimerVisual;
+
   let timerDurations = [25, 5, 25, 5, 25, 5, 25, 15];
   let timerIndex = $state(0);
   let totalTime = $derived(timerDurations[timerIndex] * 60 * 1000);
@@ -36,6 +38,7 @@
     timerIndex = (timerIndex + 1) % timerDurations.length;
     timeAccumulated = timeElapsed = 0;
     timerPaused = true;
+    timerVisual.triggerJumpAnimation();
     clearInterval(timerIntervalId);
   }
 
@@ -43,6 +46,7 @@
     timeAccumulated = 0;
     timeElapsed = 0;
     timerPaused = true;
+    timerVisual.triggerJumpAnimation();
     clearInterval(timerIntervalId);
   }
 </script>
@@ -51,7 +55,7 @@
   <ThemeSwitcher />
   <div id="timer-container">
     <div id="timer-visual-container">
-      <TimerVisual {timeRemaining} {progress} />
+      <TimerVisual bind:this={timerVisual} {timeRemaining} {progress} />
     </div>
     <div id="timer-buttons-container">
       <button id="start-button"

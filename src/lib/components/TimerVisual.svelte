@@ -5,6 +5,12 @@
   let minutes = $derived(Math.floor(timeRemaining / (60 * 1000)));
 
   let circumference = 200 * Math.PI * 2;
+
+  let isJumping = $state(false);
+  export function triggerJumpAnimation() {
+    isJumping = true;
+    setTimeout(() => { isJumping = false }, 1000);
+  }
 </script>
 
 <div id="timer">
@@ -14,7 +20,8 @@
   <svg viewBox="0 0 500 500" id="timer-progress-svg">
     <circle id="timer-progress-track" />
     <circle id="timer-progress" stroke-dasharray={circumference}
-      stroke-dashoffset={circumference * progress} />
+      stroke-dashoffset={circumference * progress}
+      class:animate-progress-jump={isJumping} />
   </svg>
 </div>
 
@@ -56,6 +63,10 @@
     stroke-linecap: round;
     transform: rotate(-90deg);
     transform-origin: center;
+  }
+
+  .animate-progress-jump {
+    transition: stroke-dashoffset 1s ease;
   }
 
   #time-text {
