@@ -9,8 +9,6 @@ on:
 
 jobs:
   build:
-    permissions:
-      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -28,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Install dependencies (ubuntu only)
+      - name: Install system dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-22.04'
         run: |
           sudo apt-get update
@@ -39,12 +37,13 @@ jobs:
             patchelf \
             xdg-utils
 
-      - name: Setup pnpm and Node
-        uses: pnpm/setup@v1
+      - name: Install pnpm and Node
+        uses: pnpm/setup@v2
         with:
-          version: 11
+          version: 11        # drop this line if package.json declares packageManager
           runtime: node@24
           cache: true
+          install: false     # run install as its own step so errors are visible
 
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
@@ -56,8 +55,13 @@ jobs:
         with:
           workspaces: './src-tauri -> target'
 
+      - name: Install frontend dependencies
+        run: pnpm install --frozen-lockfile
+
       - uses: tauri-apps/tauri-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: ${{ matrix.args }}
+          uploadWorkflowArtifacts: true
+          workflowArtifactNamePattern: '[name]-[version]-[platform]-[arch]-[bundle]'
