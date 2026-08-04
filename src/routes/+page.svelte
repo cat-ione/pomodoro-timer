@@ -17,12 +17,15 @@
   let timerPaused = $state(true);
   let timerIntervalId: number;
 
+  const dingAudio = new Audio("audio/ding.mp3");
+
   function startTimer() {
     startTime = performance.now();
     timerPaused = false;
     timerIntervalId = setInterval(() => {
       timeElapsed = timeAccumulated + performance.now() - startTime;
       if (timeRemaining <= 0) {
+        dingAudio.play();
         nextTimer();
       }
     }, 10);
