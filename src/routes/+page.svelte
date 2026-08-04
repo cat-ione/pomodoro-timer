@@ -1,5 +1,6 @@
 <script lang="ts">
   import TimerVisual from "$lib/components/TimerVisual.svelte";
+  import ThemeSwitcher from "$lib/components/ThemeSwitcher.svelte";
 
   let timerDurations = [25, 5, 25, 5, 25, 5, 25, 15];
   let timerIndex = $state(0);
@@ -47,17 +48,18 @@
 </script>
 
 <main id="main-container">
+  <ThemeSwitcher />
   <div id="timer-container">
     <div id="timer-visual-container">
       <TimerVisual {timeRemaining} {progress} />
     </div>
     <div id="timer-buttons-container">
-      <button id="start-button" class="timer-button"
+      <button id="start-button"
         onclick={() => (timerPaused ? startTimer() : pauseTimer())}>
         {timerPaused ? "\uf04b" : "\uf04c"}
       </button>
-      <button id="reset-button" class="timer-button" onclick={resetTimer}>&#xf0e2</button>
-      <button id="next-button" class="timer-button" onclick={nextTimer}>&#xf051</button>
+      <button id="reset-button" onclick={resetTimer}>&#xf0e2</button>
+      <button id="next-button" onclick={nextTimer}>&#xf051</button>
     </div>
   </div>
 </main>

@@ -14,13 +14,11 @@
   <svg viewBox="0 0 500 500" id="timer-progress-svg">
     <circle id="timer-progress-track" />
     <circle id="timer-progress" stroke-dasharray={circumference}
-      stroke-dashoffset={circumference * progress}/>
+      stroke-dashoffset={circumference * progress} />
   </svg>
 </div>
 
 <style lang="scss">
-  @use "$lib/styles/theme.scss" as *;
-
   #timer {
     position: relative;
     width: 100%;
@@ -44,7 +42,7 @@
     cy: 250px;
     r: 200px;
     fill: none;
-    stroke: $overlay0;
+    stroke: var(--color-overlay0);
     stroke-width: 17px;
   }
 
@@ -53,7 +51,7 @@
     cy: 250px;
     r: 200px;
     fill: none;
-    stroke: $mauve;
+    stroke: var(--color-mauve);
     stroke-width: 17px;
     stroke-linecap: round;
     transform: rotate(-90deg);
@@ -62,8 +60,7 @@
 
   #time-text {
     font: 4.8em "FiraCode Nerd Font";
-    color: $text;
-    font-weight: 1000;
+    color: var(--color-text);
     user-select: none;
   }
 </style>
