@@ -1,4 +1,4 @@
-@use "theme.scss" as *;
+@use "themes.scss" as *;
 
 * {
   transition:
@@ -14,7 +14,7 @@ body {
 #main-container {
   width: 100vw;
   height: 100vh;
-  background-color: var(--color-mantle);
+  background-color: var(--color-bg-main);
 
   display: flex;
   justify-content: center;
@@ -35,7 +35,7 @@ body {
   width: min(80vw, 80vh * (4 / 3));
   min-width: 500px;
 
-  background-color: var(--color-crust);
+  background-color: var(--color-bg-outer);
   border-radius: 10px;
 }
 
@@ -48,7 +48,7 @@ body {
   aspect-ratio: 1 / 1;
   height: 100%;
 
-  background-color: var(--color-base);
+  background-color: var(--color-bg-inner);
   border-radius: 10px;
 }
 
@@ -64,7 +64,7 @@ body {
   flex: 1;
   height: 100%;
 
-  background-color: var(--color-base);
+  background-color: var(--color-bg-inner);
   border-radius: 10px;
 }
 
@@ -72,13 +72,13 @@ button {
   aspect-ratio: 1 / 1;
   width: 100%;
 
-  background-color: var(--color-surface0);
+  background-color: var(--color-bg-button);
   border: none;
   border-radius: 10px;
   font: 4em "FiraCode Nerd Font";
   line-height: 0;
   color: var(--color-text);
-  box-shadow: var(--color-mantle) -5px 6px;
+  box-shadow: var(--color-shadow-inner) -5px 6px;
 
   user-select: none;
 
@@ -89,8 +89,8 @@ button {
     box-shadow 100ms ease;
 
   &:hover {
-    background-color: var(--color-mauve);
-    color: var(--color-surface1);
+    background-color: var(--color-accent);
+    color: var(--color-text-hover);
   }
 
   &:active {

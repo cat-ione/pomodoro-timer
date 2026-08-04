@@ -1,0 +1,78 @@
+@use "sass:map";
+
+@use "themes/catppuccin-latte";
+@use "themes/catppuccin-frappe";
+@use "themes/catppuccin-macchiato";
+@use "themes/catppuccin-mocha";
+
+$themes: (
+  catppuccin-latte: (
+    bg-main: catppuccin-latte.$mantle,
+    bg-outer: catppuccin-latte.$crust,
+    bg-inner: catppuccin-latte.$base,
+    bg-button: catppuccin-latte.$surface0,
+    text: catppuccin-latte.$text,
+    text-hover: catppuccin-latte.$surface1,
+    accent: catppuccin-latte.$mauve,
+    shadow-main: catppuccin-latte.$crust,
+    shadow-inner: catppuccin-latte.$mantle,
+    timer-track: catppuccin-latte.$overlay0,
+  ),
+  catppuccin-frappe: (
+    bg-main: catppuccin-frappe.$mantle,
+    bg-outer: catppuccin-frappe.$crust,
+    bg-inner: catppuccin-frappe.$base,
+    bg-button: catppuccin-frappe.$surface0,
+    text: catppuccin-frappe.$text,
+    text-hover: catppuccin-frappe.$surface1,
+    accent: catppuccin-frappe.$mauve,
+    shadow-main: catppuccin-frappe.$crust,
+    shadow-inner: catppuccin-frappe.$mantle,
+    timer-track: catppuccin-frappe.$overlay0,
+  ),
+  catppuccin-macchiato: (
+    bg-main: catppuccin-macchiato.$mantle,
+    bg-outer: catppuccin-macchiato.$crust,
+    bg-inner: catppuccin-macchiato.$base,
+    bg-button: catppuccin-macchiato.$surface0,
+    text: catppuccin-macchiato.$text,
+    text-hover: catppuccin-macchiato.$surface1,
+    accent: catppuccin-macchiato.$mauve,
+    shadow-main: catppuccin-macchiato.$crust,
+    shadow-inner: catppuccin-macchiato.$mantle,
+    timer-track: catppuccin-macchiato.$overlay0,
+  ),
+  catppuccin-mocha: (
+    bg-main: catppuccin-mocha.$mantle,
+    bg-outer: catppuccin-mocha.$crust,
+    bg-inner: catppuccin-mocha.$base,
+    bg-button: catppuccin-mocha.$surface0,
+    text: catppuccin-mocha.$text,
+    text-hover: catppuccin-mocha.$surface1,
+    accent: catppuccin-mocha.$mauve,
+    shadow-main: catppuccin-mocha.$crust,
+    shadow-inner: catppuccin-mocha.$mantle,
+    timer-track: catppuccin-mocha.$overlay0,
+  ),
+);
+
+$default-theme: catppuccin-mocha;
+
+:root {
+  @each $key, $value in map.get($themes, $default-theme) {
+    --color-#{"" + $key}: #{$value};
+  }
+}
+
+@each $theme, $palette in $themes {
+  [data-theme="#{$theme}"] {
+    @each $key, $value in $palette {
+      --color-#{"" + $key}: #{$value};
+    }
+  }
+}
+
+@font-face {
+  font-family: "FiraCode Nerd Font";
+  src: url("/fonts/FiraCodeNerdFontMono-Regular.ttf") format("truetype");
+}

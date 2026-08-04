@@ -54,7 +54,7 @@
     cy: 250px;
     r: 200px;
     fill: none;
-    stroke: var(--color-overlay0);
+    stroke: var(--color-timer-track);
     stroke-width: 17px;
   }
 
@@ -63,7 +63,7 @@
     cy: 250px;
     r: 200px;
     fill: none;
-    stroke: var(--color-mauve);
+    stroke: var(--color-accent);
     stroke-width: 17px;
     stroke-linecap: round;
     transform: rotate(-90deg);

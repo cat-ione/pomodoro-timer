@@ -1,14 +1,19 @@
 <script lang="ts">
   let index = 0;
-  let flavors = ["mocha", "macchiato", "frappe", "latte"];
+  let themes = [
+    "catppuccin-mocha",
+    "catppuccin-macchiato",
+    "catppuccin-frappe",
+    "catppuccin-latte"
+  ];
 
-  function swapPalette() {
-    index = (index + 1) % flavors.length;
-    document.documentElement.setAttribute("data-theme", flavors[index]);
+  function swapTheme() {
+    index = (index + 1) % themes.length;
+    document.documentElement.setAttribute("data-theme", themes[index]);
   }
 </script>
 
-<button id="theme-switcher" onclick={swapPalette}>&#xf1fc</button>
+<button id="theme-switcher" onclick={swapTheme}>&#xf1fc</button>
 
 <style lang="scss">
   #theme-switcher {
@@ -21,6 +26,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--color-crust) -5px 6px;
+    box-shadow: var(--color-shadow-main) -5px 6px;
   }
 </style>
