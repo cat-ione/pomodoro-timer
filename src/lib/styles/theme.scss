@@ -1,3 +1,5 @@
+@use "sass:map";
+
 $catppuccin: (
   latte: (
     rosewater: #dc8a78,
@@ -116,8 +118,8 @@ $catppuccin: (
 $default-flavor: mocha;
 
 :root {
-  @each $key, $value in map-get($catppuccin, $default-flavor) {
-    --color-#{$key}: #{$value};
+  @each $key, $value in map.get($catppuccin, $default-flavor) {
+    --color-#{"" + $key}: #{$value};
   }
 }
 
