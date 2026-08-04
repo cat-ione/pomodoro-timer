@@ -8,7 +8,7 @@
   }
 </script>
 
-<button id="theme-switcher" onclick={swapPalette} aria-label="theme-switcher">&#xf1fc</button>
+<button id="theme-switcher" onclick={swapPalette}>&#xf1fc</button>
 
 <style lang="scss">
   #theme-switcher {
